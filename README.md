@@ -1,1 +1,1 @@
-# rs2024
+# Raspberry with Python lesson 2024
