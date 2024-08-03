@@ -28,14 +28,12 @@ def created_log_file():
     
 
 def record_info(log_path):
-    data_path = created_log_file()
     now = datetime.now()
     now_str = now.strftime("%Y-%m-%d %H:%M:%S")    
     humidity = str(random.randint(330,820) / 10)
     #humidity = str(random.uniform(33.0,82.0))
     celsius = str(random.randint(50,400) / 10)
     #celsius = str(random.uniform(5.0,40.0))
-
     with open(log_path,mode='a',encoding='utf-8',newline='') as file:
         file.write(now_str + ',' + humidity + ',' + celsius +'\n')
 
