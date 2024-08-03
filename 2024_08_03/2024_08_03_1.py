@@ -3,10 +3,10 @@ import os
 from datetime import datetime
 import random
 
-def created_log_file():
+def created_log_file(folder:str,file:str)->str:
     current_path = os.path.abspath(__name__)  #取得目前檔案路徑
     directory_name = os.path.dirname(current_path) #取得目前資料夾路徑
-    data_path = os.path.join(directory_name,'data') #目前資料夾路徑加上data目錄
+    data_path = os.path.join(directory_name,folder) #目前資料夾路徑加上data目錄
     
     if not os.path.isdir(data_path):
         print("沒有data的目錄，手動建立目錄")
@@ -14,7 +14,7 @@ def created_log_file():
     else:
         print("目錄已建立")
 
-    log_path = os.path.join(data_path,'iot.log')
+    log_path = os.path.join(data_path,file)
     if not os.path.isfile(log_path):
         print("沒有iot.log,建立log檔")
         with open(log_path,mode='w',encoding='utf-8',newline='') as file:
@@ -39,7 +39,7 @@ def record_info(log_path):
 
 
 def main():
-    log_path = created_log_file()
+    log_path = created_log_file(folder='data',file='iot.log')
     record_info(log_path)
 
 if __name__ == '__main__':
