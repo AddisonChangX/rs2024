@@ -15,8 +15,8 @@ def user_release():
     print(now_str)
     if led.is_lit:
         message = f'''{{
-            "status":True,
-            "data":{now_str}",
+            "status":"True",
+            "date":"{now_str}",
             "topic":"501教室/60桌燈"
         }}'''
         print(message)
@@ -24,8 +24,8 @@ def user_release():
 
     else:
         message = f'''{{
-            "status":false,
-            "data":{now_str},
+            "status":"false",
+            "date":"{now_str}",
             "topic":"501教室/60桌燈"
         }}'''
         print(message)
