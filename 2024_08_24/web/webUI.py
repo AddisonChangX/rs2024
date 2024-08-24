@@ -9,7 +9,8 @@ from streamlit_autorefresh import st_autorefresh
 load_dotenv()
 st_autorefresh()
 
-redis_conn = redis.Redis(host=os.environ['REDIS_HOST'], port=6379,password=os.environ['REDIS_PASSWORD'])
+#redis_conn = redis.Redis(host=os.environ['REDIS_HOST'], port=6379,password=os.environ['REDIS_PASSWORD'])
+redis_conn = redis.Redis.from_url(url=os.environ['RENDER_REDIS_INTERNAL'])
 bytes_list = redis_conn.lrange('501教室/60桌燈',-10,-1)
 #將bytes string轉換為str
 str_list = [bytes_str.decode('utf-8') for bytes_str in reversed(bytes_list)]
