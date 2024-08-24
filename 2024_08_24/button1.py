@@ -2,7 +2,9 @@ import signal
 from gpiozero import Button,LED
 from datetime import datetime
 import paho.mqtt.publish as publish
-
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 def user_release():
     print("使用者按了按鈕")
@@ -18,7 +20,7 @@ def user_release():
             "topic":"501教室/60桌燈"
         }}'''
         print(message)
-        publish.single(topic='501教室/60桌燈',payload=message,hostname='127.0.0.1',qos=2)
+        publish.single(topic='501教室/60桌燈',payload=message,hostname='127.0.0.1',qos=2,auth={'username':os.environ['MQTT_USERNAME'],'password':os.environ['MQTT_PASSWORD']})
 
     else:
         message = f'''{{
@@ -27,7 +29,7 @@ def user_release():
             "topic":"501教室/60桌燈"
         }}'''
         print(message)
-        publish.single(topic='501教室/60桌燈',payload=message,hostname='127.0.0.1',qos=2)
+        publish.single(topic='501教室/60桌燈',payload=message,hostname='127.0.0.1',qos=2,auth={'username':os.environ['MQTT_USERNAME'],'password':os.environ['MQTT_PASSWORD']})
         
 
 #def user_press():
